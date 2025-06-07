@@ -7,11 +7,12 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 class DbConfig(BaseModel):
-    user: str = 'postgres.djompbewvaqavyeforrx'
-    password: str = 'ittver'
+    user: str = 'postgres.uvspxawsjvaqddxtulrc'
+    password: str = 'pervomai'
     host: str = 'aws-0-eu-north-1.pooler.supabase.com'
     port: int = 5432
     name: str = 'postgres'
+
 
     @property
     def url(self) -> str:
