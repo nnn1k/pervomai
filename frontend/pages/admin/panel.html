@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background: #212529;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: white;
+            background: #495057;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .action-btns .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Сайдбар -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-dark">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#news" data-bs-toggle="tab">
+                                <i class="bi bi-newspaper"></i> Новости
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#players" data-bs-toggle="tab">
+                                <i class="bi bi-people"></i> Игроки
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#matches" data-bs-toggle="tab">
+                                <i class="bi bi-calendar-event"></i> Матчи
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#photos" data-bs-toggle="tab">
+                                <i class="bi bi-images"></i> Фотографии
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Основной контент -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="tab-content">
+                    <!-- Новости -->
+                    <div class="tab-pane fade show active" id="news">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2>Управление новостями</h2>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">
+                                <i class="bi bi-plus"></i> Добавить
+                            </button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Заголовок</th>
+                                        <th>Дата</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Новая победа команды</td>
+                                        <td>2023-10-15</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Игроки -->
+                    <div class="tab-pane fade" id="players">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2>Управление игроками</h2>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerModal">
+                                <i class="bi bi-plus"></i> Добавить
+                            </button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Имя</th>
+                                        <th>Номер</th>
+                                        <th>Позиция</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Иван Иванов</td>
+                                        <td>10</td>
+                                        <td>Нападающий</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Матчи -->
+                    <div class="tab-pane fade" id="matches">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2>Управление матчами</h2>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal">
+                                <i class="bi bi-plus"></i> Добавить
+                            </button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Дата</th>
+                                        <th>Соперник</th>
+                                        <th>Тип</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2023-10-20 19:00</td>
+                                        <td>Команда А</td>
+                                        <td>Чемпионат</td>
+                                        <td class="action-btns">
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Фотографии -->
+                    <div class="tab-pane fade" id="photos">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2>Управление фотографиями</h2>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
+                                <i class="bi bi-plus"></i> Добавить
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Фото">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Матч против команды А</h5>
+                                        <p class="card-text text-muted">20.10.2023</p>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-sm btn-outline-primary me-2">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Модальные окна -->
+    <!-- Новость -->
+    <div class="modal fade" id="newsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить новость</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Заголовок</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Содержание</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Дата</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Изображение</label>
+                            <input type="file" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Игрок -->
+    <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить игрока</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Имя</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Фамилия</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Номер</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Позиция</label>
+                            <select class="form-select" required>
+                                <option value="">Выберите позицию</option>
+                                <option value="вратарь">Вратарь</option>
+                                <option value="защитник">Защитник</option>
+                                <option value="полузащитник">Полузащитник</option>
+                                <option value="нападающий">Нападающий</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Фото</label>
+                            <input type="file" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Матч -->
+    <div class="modal fade" id="matchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить матч</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Дата и время</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Соперник</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Тип матча</label>
+                            <select class="form-select" required>
+                                <option value="">Выберите тип</option>
+                                <option value="домашний">Домашний</option>
+                                <option value="выездной">Выездной</option>
+                                <option value="товарищеский">Товарищеский</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Результат</label>
+                            <input type="text" class="form-control" placeholder="например, 2:1">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Фото -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить фотографию</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Название</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Описание</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Дата</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Категория</label>
+                            <select class="form-select">
+                                <option value="матчи">Матчи</option>
+                                <option value="тренировки">Тренировки</option>
+                                <option value="мероприятия">Мероприятия</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Файл</label>
+                            <input type="file" class="form-control" accept="image/*" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Здесь можно добавить JavaScript логику
+        document.addEventListener('DOMContentLoaded', function() {
+            // Пример: обработка форм, AJAX запросы и т.д.
+        });
+    </script>
+</body>
+</html>

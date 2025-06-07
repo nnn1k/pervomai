@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости | Волейбольная команда "ПЕРВОМАЙ" Тверская область</title>
+    <style>
+        /* Общие стили (как на других страницах) */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Шапка */
+        header {
+            background-color: cornflowerblue;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Баннер */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/images/photo3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            height: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Секция новостей */
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: black;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: cornflowerblue;
+            margin: 15px auto;
+        }
+
+        /* Список новостей */
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background: white;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-date i {
+            margin-right: 5px;
+            color: cornflowerblue;
+        }
+
+        .news-title {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            color: cornflowerblue;
+        }
+
+        .news-excerpt {
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: cornflowerblue;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Блок "Тверские новости" */
+        .local-news {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            margin: 40px 0;
+            border-top: 3px solid cornflowerblue;
+            border-bottom: 3px solid cornflowerblue;
+        }
+
+        .local-news .section-title {
+            color: #1a3e72;
+        }
+
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .page-numbers {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .page-numbers li {
+            margin: 0 5px;
+        }
+
+        .page-numbers a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background: #f8f9fa;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .page-numbers a:hover,
+        .page-numbers a.active {
+            background: cornflowerblue;
+            color: white;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: cornflowerblue;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .news-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/">ПЕРВОМАЙ</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/info">О команде</a></li>
+                <li><a href="/news">Новости</a></li>
+                <li><a href="/gallery">Галерея</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Баннер -->
+<section class="hero">
+    <div class="container">
+        <h1>Новости команды</h1>
+        <p>Свежие события из жизни "ПЕРВОМАЯ" и волейбола Тверской области</p>
+    </div>
+</section>
+
+<!-- Основное содержимое новостей -->
+<section class="news-section">
+    <div class="container">
+        <h2 class="section-title">Новости</h2>
+
+        <!-- Список новостей -->
+        <div class="news-list">
+            <!-- Новость 1 -->
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="/frontend/images/photo1.jpg" alt="Победа в турнире">
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="far fa-calendar-alt"></i> 15 июня 2024
+                    </div>
+                    <h3 class="news-title">"ПЕРВОМАЙ" выиграл турнир в Твери</h3>
+                    <p class="news-excerpt">
+                        Наша команда одержала победу в традиционном летнем турнире
+                        памяти заслуженного тренера Тверской области В.И. Смирнова.
+                    </p>
+                </div>
+            </article>
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Подвал -->
+<footer>
+    <div class="container">
+        <div class="logo" style="margin-bottom: 20px;">
+             <a href="/">ПЕРВОМАЙ </a>
+        </div>
+
+        <p>Официальный сайт волейбольной команды "ПЕРВОМАЙ"<br>ООО "Ника" © 2025</p>
+    </div>
+</footer>
+
+</body>
+</html>
