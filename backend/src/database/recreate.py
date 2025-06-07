@@ -1,5 +1,5 @@
 from backend.src.database.base import Base, engine
-
+from backend.src.database.models.users import UserModel
 
 async def recreate():
     async with engine.begin() as conn:

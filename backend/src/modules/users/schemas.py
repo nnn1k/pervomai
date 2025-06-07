@@ -6,3 +6,9 @@ class UserSchema(BaseModel):
     login: str
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class LoginForm(BaseModel):
+    login: str
+    password: str
+
