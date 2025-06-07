@@ -22,6 +22,7 @@ def main_page(request: Request):
 def main_page(request: Request):
     return templates.TemplateResponse("gallery/gallery.html", {"request": request})
 
+
 @router.get("/news")
 def main_page(request: Request):
     return templates.TemplateResponse("news/news.html", {"request": request})
@@ -30,3 +31,8 @@ def main_page(request: Request):
 @router.get("/admin")
 def main_page(request: Request):
     return templates.TemplateResponse("admin/login.html", {"request": request})
+
+
+@router.get("/admin_panel")
+def main_page(request: Request):
+    return templates.TemplateResponse("admin/panel.html", {"request": request})
