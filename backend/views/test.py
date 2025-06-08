@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 
 from backend.src.database.dependencies import get_db
-from backend.src.database.recreate import recreate
+from backend.src.database.recreate import recreate, add_all
 
 router = APIRouter(
     prefix="/test",
@@ -25,6 +25,7 @@ async def get_test_db(
 @router.get('/recreate', summary='Дроп бд')
 async def recreate_db():
     await recreate()
+    await add_all()
     return {
         'msg': 'Recreate database successfully'
     }
